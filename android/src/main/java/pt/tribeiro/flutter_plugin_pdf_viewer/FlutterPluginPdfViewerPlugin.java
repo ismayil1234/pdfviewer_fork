@@ -39,6 +39,7 @@ public class FlutterPluginPdfViewerPlugin implements MethodCallHandler, FlutterP
     private final Object pluginLocker = new Object();
     private final String filePrefix = "FlutterPluginPdfViewer";
     private MethodChannel channel;
+    Float mScreenDensity = 1.0f;
 
     @Override
     public void onAttachedToEngine(FlutterPluginBinding flutterPluginBinding){
@@ -173,7 +174,7 @@ public class FlutterPluginPdfViewerPlugin implements MethodCallHandler, FlutterP
             PdfRenderer.Page page = renderer.openPage(--pageNumber);
 
             DisplayMetrics displayMetrics = new DisplayMetrics();
-            WindowManager wm = (WindowManager).getApplicationContext().getSystemService(Context.WINDOW_SERVICE);
+            WindowManager wm = (WindowManager) instance.getApplicationContext().getSystemService(Context.WINDOW_SERVICE);
             wm.getDefaultDisplay().getMetrics(displayMetrics);
             mScreenDensity = displayMetrics.density;
 
